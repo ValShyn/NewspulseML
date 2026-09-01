@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+
+  dashboard:
+    build: .
+    command: streamlit run src/dashboard/app.py
+    ports:
+      - "9000:8501"
+    volumes:
+      - .:/app 
+      - sqlite_data:/app/data 
+      - hf_cache:/root/.cache/huggingface 
+
+volumes:
+  sqlite_data:
+  hf_cache:
